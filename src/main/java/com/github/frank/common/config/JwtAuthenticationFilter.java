@@ -67,8 +67,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             // 1.远程地址（客户端IP）
             // 2. 会话ID（如果有的话）
             authenticated.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
             SecurityContextHolder.getContext().setAuthentication(authenticated);
+
+            // 7. 放行请求
+            filterChain.doFilter(request, response);
         } catch (Exception e) {
             log.error("JWT authentication failed: {}", e.getMessage());
             SecurityContextHolder.clearContext();
@@ -82,12 +84,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 authHeader.length() > BEARER_PREFIX.length();
     }
 
-    @Override
-    protected boolean shouldNotFilter(HttpServletRequest request) {
-        String path = request.getServletPath();
-        // 不需要JWT验证的路径
-        return path.startsWith("/api/v1/auth/") ||
-                path.startsWith("/swagger-ui/") ||
-                path.startsWith("/v3/api-docs/");
-    }
 }
