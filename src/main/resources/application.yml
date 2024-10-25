@@ -1,0 +1,24 @@
+spring:
+    application:
+        name: nexus-auth-service
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/nexus_auth_db?useSSL=false&serverTimezone=UTC
+        username: root
+        password: root
+    data:
+        redis:
+            host: localhost
+            port: 6379
+    docker:
+        compose:
+            lifecycle-management: start_only
+
+
+
+jwt:
+    secret: ${JWT_SECRET:your-secret-key-should-be-very-long-and-secure-at-least-256-bits} # 建议在生产环境中通过环境变量注入
+    expiration-minutes: ${JWT_EXPIRATION:30} # 30分钟过期
+
+
+
