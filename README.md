@@ -1,15 +1,15 @@
 # Nexus Auth Service
 
-User authentication and authorization service
+A robust authentication and authorization service built with Spring Boot 3.x, providing secure user management and JWT-based authentication.
 
+## Technology Stack
 
-
-## Requirements
-
-- JDK 21+
-- Docker
-- Docker Compose
-- Gradle
+- Framework: Spring Boot 3.3.5
+- Security: Spring Security, JWT
+- Database: MySQL
+- Migration: Flyway
+- Build Tool: Gradle
+- Java Version: 21
 
 ## Run
 
