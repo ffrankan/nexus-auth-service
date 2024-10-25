@@ -40,7 +40,11 @@ public class SecurityConfig {
                                 "/api/v1/auth/login",
                                 "/api/v1/auth/register",
                                 "/swagger-ui/**",
-                                "/v3/api-docs/**"
+                                "/v3/api-docs/**",
+                                "/",
+                                "/login",
+                                "/register",
+                                "/dashboard"
                         ).permitAll()
                         // 所有其他请求需要认证
                         .anyRequest().authenticated()
